@@ -1,0 +1,16 @@
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
+const connectDB = async()=> {
+  try {
+    const conn = await mongoose.connect(process.env.MONGODB_URL);
+    console.log(`Database Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log("URL:", process.env.MONGODB_URL);
+    console.log(error);
+  }
+}
+
+
+
+module.exports = connectDB;
+//UAWnVebjHGulldR2
