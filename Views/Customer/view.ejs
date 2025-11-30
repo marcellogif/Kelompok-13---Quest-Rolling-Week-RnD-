@@ -1,0 +1,93 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">View</h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+  </div>
+  <label class="h6"><%= customer.fullName%></label>
+</div>
+
+<div class="col py-3">
+
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+          <li class="breadcrumb-item active"><%= customer.fullName  %></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col text-end fw-lighter">
+      <div><b>Last updated at: </b><%= new Date(customer.updatedAt).toLocaleString() %></div>
+      <div><b>UserId:</b> <%= customer._id %></div>
+    </div>
+  </div>
+
+</div>
+
+<ul class="list-group">
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Name:</b></div>
+      <div class="col"><%= customer.fullName %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Email:</b></div>
+      <div class="col"><%= customer.email %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Email:</b></div>
+      <div class="col"><%= customer.email %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Division:</b></div>
+      <div class="col"><%= customer.divi %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Event Name:</b></div>
+      <div class="col"><%= customer.eventName %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Rate:</b></div>
+      <div class="col"><%= customer.rate %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Comments:</b></div>
+      <div class="col"><%= customer.comment %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Suggestions:</b></div>
+      <div class="col"><%= customer.suggestion %></div>
+    </div>
+  </li>
+
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Status:</b></div>
+      <div class="col"><%= customer.status %></div>
+    </div>
+  </li>
+
+
+</ul>

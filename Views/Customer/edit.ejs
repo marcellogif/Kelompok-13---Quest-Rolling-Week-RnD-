@@ -1,0 +1,158 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Editing: <%= customer.fullName %></h1>
+
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <button class="btn btn-sm btn-outline-secondary">?</button>
+    </div>
+  </div>
+</div>
+
+<div class="col py-3">
+
+  <!-- Header Info & Breadcrumb -->
+  <div class="row mb-3">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+          <li class="breadcrumb-item active"><%= customer.fullName %></li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="col text-end fw-lighter">
+      <div><b>Last updated at:</b> <%= new Date(customer.updatedAt).toLocaleString() %></div>
+      <div><b>UserId:</b> <%= customer._id %></div>
+    </div>
+  </div>
+
+  <!-- Update Form -->
+  <form action="/edit/<%= customer._id %>?_method=PUT" method="POST">
+
+    <!-- Personal Information -->
+    <div class="row form-group mb-4">
+      <label class="h5">Personal Information</label>
+
+      <div class="col">
+        <label for="fullName">Full Name</label>
+        <input type="text" class="form-control" id="fullName" name="fullName" 
+               value="<%= customer.fullName %>" placeholder="Full Name" required>
+      </div>
+
+      <div class="col">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email"
+               value="<%= customer.email %>" placeholder="Email" required>
+      </div>
+
+      <div class="col">
+        <label for="divi">Role</label>
+        <select class="form-control" id="divi" name="divi" required>
+          <option value="<%= customer.divi %>">-- <%= customer.divi %> --</option>
+          <option value="LnT">LnT</option>
+          <option value="EEO">EEO</option>
+          <option value="PR">PR</option>
+          <option value="HRD">HRD</option>
+          <option value="RnD">RnD</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Event Information -->
+    <div class="row form-group mb-4">
+      <label class="h5">Event Information</label>
+
+      <div class="col">
+        <label for="eventName">Event Name</label>
+        <input type="text" class="form-control" id="eventName" name="eventName"
+               value="<%= customer.eventName %>" placeholder="Event Name" required>
+      </div>
+
+      <div class="col">
+        <label for="rate">Overall Rating</label>
+        <select class="form-control" id="rate" name="rate" required>
+          <option value="<%= customer.rate %>">-- <%= customer.rate %> --</option>
+          <option value="1">1 - Sangat Buruk</option>
+          <option value="2">2 - Buruk</option>
+          <option value="3">3 - Cukup</option>
+          <option value="4">4 - Baik</option>
+          <option value="5">5 - Sangat Baik</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Feedback -->
+    <div class="row form-group mb-4">
+      <label class="h5">Your Feedback</label>
+
+      <div class="col">
+        <label for="comment">Comments</label>
+        <input type="text" class="form-control" id="comment" name="comment"
+               value="<%= customer.comment %>" placeholder="What did you think about the event?" required>
+      </div>
+
+      <div class="col">
+        <label for="suggestion">Suggestions for Improvement</label>
+        <input type="text" class="form-control" id="suggestion" name="suggestion"
+               value="<%= customer.suggestion %>" placeholder="How can we make future events better?" required>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="row form-group mb-4">
+      <label class="h5">Status</label>
+
+      <div class="col">
+        <label for="status">Status</label>
+        <select class="form-control" id="status" name="status" required>
+          <option value="<%= customer.status %>">-- <%= customer.status %> --</option>
+          <option value="open">open</option>
+          <option value="in-review">in-review</option>
+          <option value="resolved">resolved</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="form-group mb-4">
+      <button type="submit" class="btn btn-primary">Update Feedback</button>
+
+      <button type="button" class="btn btn-danger" id="deleteButton"
+              data-bs-toggle="modal" data-bs-target="#deleteModal">
+        Delete Feedback
+      </button>
+    </div>
+  </form>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">You are about to remove a Feedback.</div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <p>
+            This will remove the Feedback data of 
+            <b class="fw-bold"><%= customer.fullName %></b><br>
+            Are you sure?
+          </p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+
+          <form action="/edit/<%= customer._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-primary">Yes, Remove Feedback</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
